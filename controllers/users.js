@@ -19,8 +19,8 @@ const getAll = (req, res) => {
 
 const getOne = (req, res) => {
 
-        const id = req.body.id;
-        const sql = (`SELECT * FROM ${tabla} WHERE id = ${id}`)
+        const id = req.params.id;
+        const sql = (`SELECT * FROM ${tabla} WHERE ${id}`)
         db.query(sql, (err, results) => {
             if (err) {
                 console.error(err.message);
@@ -33,12 +33,13 @@ const getOne = (req, res) => {
 
 const create = (req, res) => {
 
-    const { user, imagen, name, email, password } = req.params;
+    const { user, imagen, nombre, email, password, rol } = req.body;
 
-    const password2 = bcrypt.hashSync('password',10)
+    const password2 = bcrypt.hashSync(password, 10);
+ 
 
-    const sql = (`INSERT INTO ${tabla} (user, password, email, name, imagen, rol) VALUES ('?','?','?','?','?')`)
-    db.query(sql, { name, email, password2 }, (err, results) => {
+    const sql = (`INSERT INTO ${tabla} (user, imagen, nombre, email, password, rol) Values ("${user}", "${imagen}", "${nombre}", "${email}", "${password2}", "${rol}")`)
+    db.query(sql, (err, results) => {
         if (err) {
             console.error(err.message);
             return res.status(500).send(`Error creando registro en tabla: ${tabla}`);

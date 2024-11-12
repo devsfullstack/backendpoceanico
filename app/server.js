@@ -8,8 +8,9 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('./public/'))
 
-app.use('/api', require('../routes'));
+app.use('/api', require('../routes/users'));
 
 const port = config.port
 
