@@ -10,7 +10,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./public/'))
 
-app.use('/api', require('../routes/users'));
+const users = require('../routes/users')
+
+app.use('/api', users);
 
 const port = config.port
 
