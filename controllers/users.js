@@ -40,9 +40,7 @@ const getOne = (req, res) => {
     
         })
     })
-    } 
-
-    if (user){
+    }else if (user){
         const sql = (`SELECT * FROM ${tabla} WHERE user = '${user}'`)
         db.query(sql, (err, results) => {
             if (err) {
@@ -56,9 +54,7 @@ const getOne = (req, res) => {
                         results
                     })
                 })
-        }
-
-        if(email){
+        }else if(email){
             const sql = (`SELECT * FROM ${tabla} WHERE email = '${email}'`)
             db.query(sql, (err, results) => {
                 if (err) {
@@ -72,9 +68,7 @@ const getOne = (req, res) => {
                             results
                             })
                             })
-        }
-
-        if (nombre){
+        }else if(nombre){
             const sql = (`SELECT * FROM ${tabla} WHERE nombre = '${nombre}'`)
             db.query(sql, (err, results) => {
                 if (err) {
