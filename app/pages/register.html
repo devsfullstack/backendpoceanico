@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <main>
+        <div class="form-container">
+            <h1>Crear cuenta</h1>
+            <p>Creá tu cuenta para acceder a nuestros servicios</p>
+            <form id="login-form">
+                <label for="user" class="sr-only">Nombre de usuario:</label>
+                <input type="text" id="user" name="user" placeholder="Nombre de usuario" required>
+                <label for="email" class="sr-only">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Correo electronico" required>
+                <label for="password" class="sr-only">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <label for="imagen" class="sr-only">Imagen:</label>
+                <input type="file" id="imagen" name="imagen" placeholder="Imagen" required>
+                <label for="rol" class="sr-only">Rol de usuario:</label>
+                    <select name="rol" id="rol" required>
+                        <option value="user" selected>User</option>
+                        <option value="admin">Admin</option>
+                        <option value="dev">Desarrollo</option>
+                    </select>
+                <button type="submit">Registrar usuario</button>
+                <p class="error escondido">Error al registrarse</p>
+            </form>
+            <p>¿Ya estas registrado? <a href="/login">Iniciar sesión</a></p>
+            
+        </div>
+    </main>
+    <script src="./js/register.js"></script>
+</body>
+</html>

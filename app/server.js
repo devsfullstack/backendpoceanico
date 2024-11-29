@@ -8,11 +8,19 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('./public/'))
+app.use(express.static('./public'))
 
 const users = require('../routes/users')
+const auth = require('../routes/auth')
 
-app.use('/api', users);
+//app.use('/auth', auth)
+app.use('/login', (req, res)=>{
+    res.sendFile(__dirname + '/pages/login.html')
+});
+
+app.use('/register', (req, res)=>{
+    res.sendFile(__dirname + '/pages/register.html')
+});
 
 const port = config.port
 

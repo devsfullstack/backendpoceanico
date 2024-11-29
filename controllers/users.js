@@ -1,5 +1,7 @@
 const db = require('../app/db')
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('../app/config')
 
 const tabla = 'users'
 
@@ -19,11 +21,8 @@ const getAll = (req, res) => {
 
 
 const getOne = (req, res) => {
-    const {id} = req.body
-    const {user} = req.body
-    const {email} = req.body
-    const {nombre} = req.body
-
+    const {id, user, email, nombre} = req.body
+    
     if(id > 0){
         const sql = (`SELECT * FROM ${tabla} WHERE id = '${id}'`)
         db.query(sql, (err, results) => {
@@ -102,7 +101,49 @@ const create = (req, res) => {
             }
             res.json(results)
             });
+
+            const token = jwt.sign({id: users.id}, config.auth.secretkey, {
+                expiresIn: config.auth.tokenExpiresIn
+                });
+
+                res.status(200).json({
+                    auth: true,
+                    token: token,
+                    user: users
+                })
         }
+
+        const login = (req, res) => {
+            const { user, password } = req.body;
+            const sql = (`SELECT * FROM ${tabla} WHERE user = '${user}'`)
+            db.query(sql, (err, results) => {
+                if (err) {
+                    console.error(err.message);
+                    return res.status(500).send(`Error al consultar la tabla: ${tabla}`);
+                    }
+                    if (results.length === 0) {
+                        return res.status(404).send(`El usuario con nombre ${user} no existe`);
+                        }
+                        const user = results[0];
+                        const validPassword = bcrypt.compareSync(password, users.password);
+                        if (!validPassword) {
+                            return res.status(401).send('Contraseña incorrecta');
+                            }
+                            const token = jwt.sign({id: users.id}, config.auth.secretkey, {
+                                expiresIn: config.auth.tokenExpiresIn
+                                });
+                                res.status(200).json({
+                                    auth: true,
+                                    token: token,
+                                    user: user
+                                    })
+                                    });
+
+
+
+        }
+
+
 
     const update = (req, res)=>{
 
