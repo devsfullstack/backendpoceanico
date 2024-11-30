@@ -14,13 +14,9 @@ const users = require('../routes/users')
 const auth = require('../routes/auth')
 
 //app.use('/auth', auth)
-app.use('/login', (req, res)=>{
-    res.sendFile(__dirname + '/pages/login.html')
-});
-
-app.use('/register', (req, res)=>{
-    res.sendFile(__dirname + '/pages/register.html')
-});
+app.use('/api/login', (req, res)=>{res.sendFile(__dirname + '/pages/login.html')})
+app.use('/', auth);
+app.use('/api/admin', (req, res)=>{res.sendFile(__dirname + '/pages/admin/admin.html')});
 
 const port = config.port
 
