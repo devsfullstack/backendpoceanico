@@ -95,12 +95,9 @@ const create = (req, res) => {
 
     const sql = (`INSERT INTO ${tabla} (user, imagen, nombre, email, password, rol) VALUES ("${user}", "${imagen}", "${nombre}", "${email}", "${password2}", "${rol}")`)
     db.query(sql, (err, results) => {
-        if (err) {
-            console.error(err.message);
-            return res.status(500).send(`Error creando registro en tabla: ${tabla}`);
-            }
-            res.json(results)
-            });
+        if (err) { return res.status(500).send(`Error creando registro en tabla: ${tabla}`) }
+            
+        res.json(results)});
 
             const token = jwt.sign({id: users.id}, config.auth.secretkey, {
                 expiresIn: config.auth.tokenExpiresIn

@@ -1,4 +1,4 @@
-document.getElementById("register-form").addEventListener("submit",async(e)=>{
+document.getElementById("register-form").addEventListener("submit",async(e)=>{ 
     e.preventDefault();
     const res = await fetch('http://localhost:4000/register', {
         method: 'POST',
