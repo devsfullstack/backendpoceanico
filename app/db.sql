@@ -193,3 +193,5 @@ CREATE TABLE `productos`
     PRIMARY KEY (`Id_producto`),
     CONSTRAINT FOREIGN KEY (`id_proveedor`, `id_categoria`, `id_user`) REFERENCES `proveedores`, ` categorias`, `users` (`id_proveedor`, `id_categoria`, `id_user`)
 ) ENGINE =InnoDB
+
+/*Para crear la base de datos y crear las tablas en mysql debes importar este documento*/
