@@ -9,7 +9,7 @@ CREATE TABLE `users`
   `email` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_users`)
   ) ENGINE=InnoDB
 
@@ -20,7 +20,7 @@ CREATE TABLE `categorias`
   `tipo` TEXT,
   `id_user` int(11), /*Relacion con la tabla users*/
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_categoria`),
   CONSTRAINT FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
   ) ENGINE=InnoDB
@@ -56,7 +56,7 @@ CREATE TABLE `historico`
   `Modulo` VarChar(50) NOT NULL, 
   `Accion` VarChar(20) NOT NULL,
   `id_user` int(11),
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`Id_historico`),
     CONSTRAINT FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
 ) ENGINE=InnoDB
