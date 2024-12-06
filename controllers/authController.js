@@ -15,9 +15,23 @@ const login = async (req, res) => {
     db.query(sql, (err, results) => {
         if (err) { return res.status(500).send(`No se encontro el usuario`) }
         if (results.length === 0) { return res.status(404).send(`No se encontro el usuario`) }
+        
+        const userDB = results[0]
 
+        const validPassword = bcrypt.compareSync(password, userDB.password)
+        if (!validPassword) { return res.status(401).send(`Contraseña incorrecta`)}
+        const token = jwt.sign({ id: userDB.id, user: userDB.user }, config.auth.secretkey, { expiresIn: config.auth.tokenExpiresIn })
+            res.json({ token })
+            
+
+        
+        //const isValidPassword = bcrypt.compareSync(password, sql.password)
+        
+        //if (!isValidPassword) {return res.status(401).json({ message: 'Contraseña invalida' })}
         return res.status(200).json({ message: 'Usuario encontrado, Bienvenido '+user,
-            results
+            token: jwt.sign({ user }, config.auth.secretkey, { expiresIn: '1h ' })
+
+            
          })
         })}
 
