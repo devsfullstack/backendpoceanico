@@ -8,7 +8,7 @@ module.exports = {
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'mydb'
 },
-    auth: {
+    jwt: {
     secretkey: process.env.SECRET_KEY || 'secretkey',
     tokenExpiresIn: process.env.TEI || '1h'
 }
