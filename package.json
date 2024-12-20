@@ -1,0 +1,27 @@
+{
+  "name": "backendpoceanico",
+  "version": "1.0.0",
+  "description": "Api Backend empresa Producto Oceanico",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --watch index.js",
+    "dev": "node --watch index.js"
+  },
+  "author": "DevsFullStack2024",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "2.4.3",
+    "cookie-parser": "1.4.7",
+    "cors": "2.8.5",
+    "express": "4.21.1",
+    "jsonwebtoken": "9.0.2",
+    "morgan": "1.10.0",
+    "mysql2": "3.11.4"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "dotenv": "16.4.5"
+  }
+}
