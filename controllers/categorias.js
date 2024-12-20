@@ -38,9 +38,27 @@ const create = (req, res) => {
             });
         }
 
+const update = (req, res) => {
+    const id = req.params.id;
+    const { name, email, password } = req.body;
+    const sql = ("UPDATE categorias SET ? WHERE id = ?")
+    db.query(sql, [{name, email, password}, id], (err, results) =>
+        {
+            if (err) {
+                console.error(err.message);
+                return res.status(500).send('Error actualizando usuario');
+                }
+                res.json(results)
+                });
+                }
+
+const deleted = (req, res) => {}
+
 module.exports = {
     getOne,
     getAll,
-    create
+    create,
+    update,
+    deleted
 
     }

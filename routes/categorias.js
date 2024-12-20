@@ -3,8 +3,11 @@ const router = express.Router()
 const controllers = require('../controllers/categorias')
 const path = require('path')
 
-router.get('/', controllers.getAll)
+router.get('/categorias', controllers.getAll)
 router.get(path.join('/'+'?:id'), controllers.getOne)
-router.post('/', controllers.create)
+router.post('/categorias', controllers.create)
+router.put('/categorias', controllers.update)
+router.delete('/categorias', controllers.deleted)
+
 
 module.exports = router;

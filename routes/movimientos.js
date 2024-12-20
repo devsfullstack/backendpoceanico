@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router()
-const controllers = require('../controllers/users')
+const controllers = require('../controllers/movimientos')
 const path = require('path')
 
-router.get('/', controllers.getAll)
+router.get('/movimientos', controllers.getAll)
 router.get(path.join('/'+'?:id'), controllers.getOne)
-router.post('/', controllers.create)
+router.post('/movimientos', controllers.create)
+router.put('/movimientos', controllers.update)
+router.delete('/movimientos', controllers.deleted)
 
 module.exports = router;

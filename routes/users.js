@@ -5,7 +5,7 @@ const controllers = require('../controllers/users')
 router.get('/users', controllers.getAll)
 router.get('/user', controllers.getOne)
 router.post('/user', controllers.create),
-router.put('/', controllers.update),
-router.delete('/', controllers.deleted)
+router.put('/user', controllers.update),
+router.delete('/user', controllers.deleted)
 
 module.exports = router;

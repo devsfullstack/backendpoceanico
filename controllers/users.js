@@ -103,13 +103,9 @@ const create = (req, res) => {
 
 
 
-    const update = (req, res)=>{
+    const update = (req, res)=>{}    
 
-    }    
-
-    const deleted = (req,res) =>{
-
-    }
+    const deleted = (req,res) =>{}
     
 module.exports = {
     getOne,

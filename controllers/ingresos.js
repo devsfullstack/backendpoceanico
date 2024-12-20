@@ -38,9 +38,15 @@ const create = (req, res) => {
             });
         }
 
-module.exports = {
-    getOne,
-    getAll,
-    create
 
-    }
+        const update = (req,res)=>{}
+        const deleted = (req,res)=>{}
+        
+        module.exports = {
+            getOne,
+            getAll,
+            create,
+            update,
+            deleted
+        
+            }

@@ -40,9 +40,14 @@ const create = (req, res) => {
             });
         }
 
+const update = (req,res)=>{}
+const deleted = (req,res)=>{}
+
 module.exports = {
     getOne,
     getAll,
-    create
+    create,
+    update,
+    deleted
 
     }
